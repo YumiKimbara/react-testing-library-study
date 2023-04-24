@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, logRoles, fireEvent } from "@testing-library/react";
 import App from "./App";
 
 /*
@@ -45,16 +45,41 @@ import App from "./App";
  * - use actual browser and server(Cypress, Selenium)
  */
 
-test("renders learn react link", () => {
-  // render creates a virtual dom
+// test("renders learn react link", () => {
+//   // render creates a virtual dom
+//   render(<App />);
+//   // can access to the virtual dom by using screen dom
+//   // /learn react/ is regular expression and i means case insensitive
+//   // but you can also put string in this argument
+//   // const linkElement = screen.getByText(/learn react/i);
+
+//   // can access by each role (button, link, alert and so on)
+//   const linkElement = screen.getByRole("link", { name: /learn react/i });
+
+//   expect(linkElement).toBeInTheDocument();
+// });
+
+test("button has correct initial color, and updates when its clicked", () => {
+  // destructure container from render
+  // This helper function logRoles can be used to print out a list of all the implicit ARIA roles within a tree of DOM nodes
+  // const { container } = render(<App />);
+  // logRoles(container);
+
   render(<App />);
-  // can access to the virtual dom by using screen dom
-  // /learn react/ is regular expression and i means case insensitive
-  // but you can also put string in this argument
-  // const linkElement = screen.getByText(/learn react/i);
 
-  // can access by each role (button, link, alert and so on)
-  const linkElement = screen.getByRole("link", { name: /learn react/i });
+  // find an element with a role of button and text of "change to blue"
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
 
-  expect(linkElement).toBeInTheDocument();
+  // expect the background color to be red
+  expect(colorButton).toHaveStyle({ "background-color": "red" });
+
+  // click button
+  fireEvent.click(colorButton);
+
+  // expect the background color to be blue
+  expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
+
+  // expect the button text to be "Change to red"
+  expect(colorButton).toHaveTextContent("Change to red");
 });
+test("button turns blue when clicked", () => {});
