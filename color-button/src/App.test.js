@@ -1,5 +1,6 @@
 import { render, screen, logRoles, fireEvent } from "@testing-library/react";
 import App from "./App";
+import { replaceCamelWithSpaces } from "./App";
 
 /*
  * npm test -> starts by running jest in the watch mode.
@@ -82,4 +83,26 @@ test("button has correct initial color, and updates when its clicked", () => {
   // expect the button text to be "Change to red"
   expect(colorButton).toHaveTextContent("Change to red");
 });
-test("button turns blue when clicked", () => {});
+
+test("initial conditions", () => {
+  render(<App />);
+
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  expect(colorButton).toBeEnabled();
+
+  const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
+  expect(checkbox).not.toBeChecked();
+});
+
+// describe will group tests
+describe("spaces before camel-case capital letters", () => {
+  test("Works for no inner capital letters", () => {
+    expect(replaceCamelWithSpaces("Red")).toBe("Red");
+  });
+  test("Works for one inner capital letters", () => {
+    expect(replaceCamelWithSpaces("MidnightBlue")).toBe("Midnight Blue");
+  });
+  test("Works for multiple inner capital letters", () => {
+    expect(replaceCamelWithSpaces("MediumViletRed")).toBe("Medium Vilet Red");
+  });
+});
