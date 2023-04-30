@@ -60,6 +60,10 @@ import { replaceCamelWithSpaces } from "./App";
 //   expect(linkElement).toBeInTheDocument();
 // });
 
+/*
+ * install eslint-plugin-testing-library, eslint-plugin-jest-dom
+ */
+
 test("button has correct initial color, and updates when its clicked", () => {
   // destructure container from render
   // This helper function logRoles can be used to print out a list of all the implicit ARIA roles within a tree of DOM nodes
