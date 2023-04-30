@@ -62,6 +62,8 @@ import { replaceCamelWithSpaces } from "./App";
 
 /*
  * install eslint-plugin-testing-library, eslint-plugin-jest-dom
+ * delete eslintConfig from the package.json to delete default config
+ * create a .eslintrc.json file and write your own config
  */
 
 test("button has correct initial color, and updates when its clicked", () => {
