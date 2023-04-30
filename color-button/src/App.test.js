@@ -1,4 +1,4 @@
-import { render, screen, logRoles, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 import { replaceCamelWithSpaces } from "./App";
 
@@ -61,9 +61,12 @@ import { replaceCamelWithSpaces } from "./App";
 // });
 
 /*
+ * # Settings for ESLint
  * install eslint-plugin-testing-library, eslint-plugin-jest-dom
  * delete eslintConfig from the package.json to delete default config
  * create a .eslintrc.json file and write your own config
+ * create settings.json
+ * add .vscode and .eslintcache in the gitignore
  */
 
 test("button has correct initial color, and updates when its clicked", () => {
