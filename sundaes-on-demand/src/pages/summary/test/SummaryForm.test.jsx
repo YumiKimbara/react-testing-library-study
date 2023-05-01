@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 /*
  * make sure to setup eslint and prettier
  * delete App.test.js because we need more specific test files
- * npm i msw -> install msw
+ * npm i msw -> install Mock Service Worker(開発中にモックAPIを作成するために使用。テスト時に実際のAPIを呼ばなくて良いから便利)
  */
 
 test("Initial conditions", () => {
