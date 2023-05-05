@@ -18,6 +18,9 @@ test.only("handles error for scoops and toppings routes", async () => {
   render(<OrderEntry />);
 
   // waitFor will wait any period of time
+  // 下記のawait screen...はtoppingとicecreamの二つの通信が終わってから実行したいが、
+  // 一つの通信が終わった後に実行しエラーになる可能性がある。そのためwaitForでwrapし待つようにする。
+  // findByも非同期処理だが、それだけでは足りないらしく、waitForの非同期処理も追加で必要。
   await waitFor(async () => {
     const alerts = await screen.findAllByRole("alert");
     expect(alerts).toHaveLength(2);
